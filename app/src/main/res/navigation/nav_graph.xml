@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.firebasetemplate.SignInFragment"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_postsHomeFragment"
+            app:destination="@id/navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.firebasetemplate.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.firebasetemplate.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_postsHomeFragment"
+            app:destination="@+id/navigation"/>
+    </fragment>
+    <fragment
+        android:id="@+id/signOutFragment"
+        android:name="com.example.firebasetemplate.SignOutFragment"
+        android:label="Sign Out"
+        tools:layout="@layout/fragment_sign_out" />
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.example.firebasetemplate.NewPostFragment"
+        android:label="New Post"
+        tools:layout="@layout/fragment_new_post" />
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/postsHomeFragment">
+        <action
+            android:id="@+id/action_postsHomeFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_postsHomeFragment_to_signOutFragment"
+            app:destination="@id/signOutFragment" />
+        <action
+            android:id="@+id/action_postsHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <fragment
+            android:id="@+id/postsHomeFragment"
+            android:name="com.example.firebasetemplate.PostsHomeFragment"
+            android:label="Home"
+            tools:layout="@layout/fragment_posts">
+
+        </fragment>
+        <fragment
+            android:id="@+id/postsMyFragment"
+            android:name="com.example.firebasetemplate.PostsMyFragment"
+            android:label="My posts"
+            tools:layout="@layout/fragment_posts">
+
+        </fragment>
+        <fragment
+            android:id="@+id/postsLikeFragment"
+            android:name="com.example.firebasetemplate.PostsLikeFragment"
+            android:label="Likes"
+            tools:layout="@layout/fragment_posts">
+
+        </fragment>
+    </navigation>
+</navigation>
