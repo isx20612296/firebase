@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.NavDirections;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -75,6 +76,13 @@ public class PostsHomeFragment extends AppFragment {
             holder.binding.contenido.setText(post.content);
             holder.binding.autor.setText(post.authorName);
             Glide.with(requireContext()).load(post.imageUrl).into(holder.binding.imagen);
+
+
+            holder.itemView.setOnClickListener(v-> {
+                NavGraphDirections.ToDetailFragment action = NavGraphDirections.toDetailFragment();
+                action.setPostid(post.postId);
+                navController.navigate(action);
+            });
 
             holder.binding.favorito.setOnClickListener(v -> {
                 db.collection("posts").document(post.postId).update("favs." + auth.getUid(), !post.favs.containsKey(auth.getUid()) ? true : FieldValue.delete());
